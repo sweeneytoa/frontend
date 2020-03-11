@@ -4,40 +4,165 @@ import {
   Text,
   KeyboardAvoidingView,
   ScrollView,
-  StyleSheet
+  StyleSheet,
+  Fetch,
+  Button, 
+  Input
 } from "react-native";
+import { TextInput } from 'react-native-gesture-handler'
+import {
+  getFromStorage,
+  setInStorage,
+} from "../components/storage";
 import colors from "../styles/colors";
 import InputField from "../components/InputField";
-import NextArrowButton from "../components/button/NextArrowButton"
+import NextArrowButton from "../components/button/NextArrowButton";
 export default class Login extends Component {
+  constructor(props){
+    super(props);
+
+    this.state = {
+      isLoading: true,
+      token: '',
+      signUpError: '',
+      signInErrror: '',
+      username:'',
+      password: ''
+    };
+
+    this.onTextboxChangeusername = this.onTextboxChangeusername.bind(this);
+    this.onTextboxChangepassword = this.onTextboxChangepassword.bind(this);
+    this.onSignIn = this.onSignIn.bind(this);
+  }
+
+
+
+  componentDidMount() {
+    const obj = getFromStorage('the_main_app');
+    if (obj && obj.token) {
+    const { token } = obj;
+    // Verify token
+    fetch('/api/account/verify?token=' + token)
+    .then(res => res.json())
+    .then(json => {
+    if (json.success) {
+    this.setState({
+                  token,
+    isLoading: false
+    });
+    } else {
+    this.setState({
+    isLoading: false,
+    });
+    }
+    });
+    } else {
+    this.setState({
+    isLoading: false,
+    });
+    }
+    }
+
+  onTextboxChangeusername(event) {
+    this.setState({
+      username: event.target.value,
+    });
+  }
+
+  onTextboxChangepassword(event) {
+    this.setState({
+      password: event.target.value,
+    });
+    
+  }
+
+  onSignIn() {
+    // Grab state
+    const {
+          username,
+          password,
+    } = this.state;
+    this.setState({
+    isLoading: true,
+    });
+    // Post request to backend
+    fetch('https://apioulu.herokuapp.com/api/login', {
+    method: 'POST',
+    headers: {
+    'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+    username: username,
+    password: password,
+    }),
+    }).then(res => res.json())
+    .then(json => {
+    console.log('json', json);
+    if (json.success) {
+    setInStorage('the_main_app', { token: json.token });
+    this.setState({
+    signInError: json.message,
+    isLoading: false,
+    password: '',
+    username: '',
+    token: json.token,
+    });
+    } else {
+    this.setState({
+    signInError: json.message,
+    isLoading: false,
+    });
+    }
+    });
+    }
+  
+  
+
+
   render() {
+
+    const {
+      isLoading,
+      token,
+      signInErrror,
+      username,
+      password,
+    } = this.state;
+
+    if (isLoading) {
+      return <Text> Loading... </Text>
+    }
+
+
     return (
+
+
       <KeyboardAvoidingView style={styles.wrapper} behavior="padding">
         <View style={styles.scrollViewWrapper}>
           <ScrollView style={styles.scrollView}>
             <Text style={styles.loginHeader}>Login</Text>
-            <InputField 
-              labelText="USERNAME" 
-              labelTextSize={14} 
-              labelColor={colors.white} 
-              textColor={colors.white} 
-              borderBottomColor={colors.white} 
-              inputType="username" 
-              customStyle={{marginBottom:30}} 
-                
-            />
-            <InputField 
-              labelText="PASSWORD" 
-              labelTextSize={14} 
-              labelColor={colors.white} 
-              textColor={colors.white} 
-              borderBottomColor={colors.white} 
-              inputType="password"  
-              customStyle={{marginBottom:30}}
 
+            
+            
+            <TextInput
+type="username"
+placeholder="username"
+value={username}
+onChange={this.onTextboxChangeusername}
             />
+            
+            <TextInput
+type="password"
+placeholder="password"
+value={password}
+onChange={this.onTextboxChangepassword}
+            />
+           
+
+
             <NextArrowButton
                 />
+                <Button onClick={this.onSignIn} title='Sign in'> Sign in</Button>
           </ScrollView>
 
          </View>
