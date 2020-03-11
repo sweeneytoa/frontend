@@ -17,12 +17,12 @@ export default class Login extends Component {
           <ScrollView style={styles.scrollView}>
             <Text style={styles.loginHeader}>Login</Text>
             <InputField 
-              labelText="EMAIL ADDRESS" 
+              labelText="USERNAME" 
               labelTextSize={14} 
               labelColor={colors.white} 
               textColor={colors.white} 
               borderBottomColor={colors.white} 
-              inputType="email" 
+              inputType="username" 
               customStyle={{marginBottom:30}} 
                 
             />
@@ -45,6 +45,8 @@ export default class Login extends Component {
     );
   }
 }
+
+
 
 const styles = StyleSheet.create({
     wrapper: {
