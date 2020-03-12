@@ -6,10 +6,9 @@ import {
   ScrollView,
   StyleSheet,
   Fetch,
-  Button, 
-  Input
+  Button
 } from "react-native";
-import { TextInput } from 'react-native-gesture-handler'
+
 import {
   getFromStorage,
   setInStorage,
@@ -42,7 +41,7 @@ export default class Login extends Component {
     if (obj && obj.token) {
     const { token } = obj;
     // Verify token
-    fetch('/api/account/verify?token=' + token)
+    fetch('https://apioulu.herokuapp.com/api/login/verify?token=' + token)
     .then(res => res.json())
     .then(json => {
     if (json.success) {
@@ -98,6 +97,7 @@ export default class Login extends Component {
     }).then(res => res.json())
     .then(json => {
     console.log('json', json);
+    setInStorage('the_main_app', json.token)
     if (json.success) {
     setInStorage('the_main_app', { token: json.token });
     this.setState({
@@ -130,7 +130,7 @@ export default class Login extends Component {
     } = this.state;
 
     if (isLoading) {
-      return <Text> Loading... </Text>
+      return <Text> (<div> <p>Loading...</p></div>); </Text>
     }
 
 
@@ -142,27 +142,26 @@ export default class Login extends Component {
           <ScrollView style={styles.scrollView}>
             <Text style={styles.loginHeader}>Login</Text>
 
-            
-            
-            <TextInput
-type="username"
-placeholder="username"
-value={username}
-onChange={this.onTextboxChangeusername}
-            />
-            
-            <TextInput
+            <input
 type="password"
 placeholder="password"
 value={password}
-onChange={this.onTextboxChangepassword}
-            />
+onChange={this.onTextboxChangepassword}></input>
+           
+            
+            <input
+type="username"
+placeholder="username"
+value={username}
+onChange={this.onTextboxChangeusername}></input>
+            
+            
+
            
 
 
-            <NextArrowButton
-                />
-                <Button onClick={this.onSignIn} title='Sign in'> Sign in</Button>
+            
+                <button onClick={this.onSignIn}> Sign in</button>
           </ScrollView>
 
          </View>

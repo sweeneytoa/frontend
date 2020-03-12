@@ -28,31 +28,6 @@ export default class ImagePickAndSend extends Component {
       return;
     }
 
-    const fileNameSplit = pickerResult.uri.split('/');
-    const fileName = fileNameSplit[fileNameSplit.length - 1];
-
-    let postForm = new FormData();
-    postForm.append('myFiles', {
-      uri: pickerResult.uri,
-      name: fileName,
-      type: 'image/jpeg'
-    });
-    postForm.append('foo', 'bar');
-
-    axios({
-      method: 'post',
-      url: this.props.targetURI,
-      data: postForm,
-      headers: { 'Content-Type': 'multipart/form-data' }
-      })
-      .then(function (response) {
-          //handle success
-          console.log(response);
-      })
-      .catch(function (response) {
-          //handle error
-          console.log(response);
-      });
   }
 
   render() {

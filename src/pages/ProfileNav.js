@@ -18,24 +18,25 @@ import NextArrowButton from "../components/button/NextArrowButton";
 import Login from "./Login";
 import {NavigationContainer} from '@react-navigation/native'
 import {createStackNavigavtor} from '@react-navigation/stack'
+import Profile from "./Profile";
 
 const Stack = createStackNavigavtor();
 
 
 
-export default class Profile extends Component {
+export default class ProfileNav extends Component {
 
 
-render(){
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-
-      <Text style={{ fontSize: 50, fontWeight: '700' }}>Profile View</Text>
-      <Button onPress={event =>  window.location.href='./Login'} title='Sign in'> Sign in</Button>
-      <Login />
-    </View>
+    render(){
+      return (
+        <NavigationContainer>
+            <Stack.Navigator>
+                <Stack.Screen name="Profile" componnent={Profile}/>
+            </Stack.Navigator>
+        </NavigationContainer>
+        
+      )
+    }
+    }
     
-  )
-}
-}
-
+    

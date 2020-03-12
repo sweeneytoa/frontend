@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
     display: "flex"
   },
   label: { fontWeight: "700", marginBottom: 10 },
-  inputFiled: {
+  inputField: {
     borderBottomWidth: 1,
     paddingTop: 5,
     paddingBottom: 5

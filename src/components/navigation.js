@@ -17,6 +17,7 @@ export default class TabNavigation extends Component {
       <NavigationContainer> 
         <Tab.Navigator>
             <Tab.Screen 
+            
             name="ListAllPosts" 
             component={listAllPostsView} 
             options={{ 
@@ -24,6 +25,7 @@ export default class TabNavigation extends Component {
                 <Ionicons name="ios-list" color={color} size={size} />)
             }}
           />
+          
           <Tab.Screen 
             name="Create" 
             component={CreateView} 
