@@ -19,7 +19,7 @@ import Login from "./Login";
 import {NavigationContainer} from '@react-navigation/native'
 import {createStackNavigavtor} from '@react-navigation/stack'
 
-const Stack = createStackNavigavtor();
+//const Stack = createStackNavigavtor();
 
 
 

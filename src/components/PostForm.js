@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import axios from 'axios'
+import React, { Component } from 'react';
+import axios from 'axios';
 import ImagePicker from './imagePicker'
 
 class PostForm extends Component {
@@ -29,38 +29,39 @@ class PostForm extends Component {
     
 	submitHandler = e => {
 		e.preventDefault()
-        console.log(this.state)
+		console.log(this.state)
+		
+		var photo = {
+			uri: './image.jpg',
+			type: 'image/jpeg',
+			name: 'photo.jpg',
+		};
 
-        var img = {
-            uri : 'file://./image.jpg',
-            name: 'image.jpg',
-            type: 'image/jpg'
-        };
-        const formData = new FormData(event.target);
+        
+		const formData = new FormData(event.target);
+		
         formData.set('title', formData.get('title').toUpperCase());
         formData.set('description', formData.get('description').toUpperCase());
         formData.set('category', formData.get('category').toUpperCase());
         formData.set('location', formData.get('location').toUpperCase());
         formData.set('price', formData.get('price').toUpperCase());
         formData.set('delivery', formData.get('delivery').toUpperCase());
-        formData.set('images', {
-            uri: ImagePicker.uri,
-            name: ImagePicker.name,
-            type: ImagePicker.type
-        });
-       
+        formData.set('images', formData.get('photo'))
+        ;
        
         
 
 		axios
             .post('https://apioulu.herokuapp.com/api/posts', this.state, {
             headers: {
-                 Accept: 'application/json',
+                 
                 'Content-Type': 'multipart/form-data',
-                'Authorization': "bearer" + localStorage.getItem("json.token"),
-                body : formData
+                'Authorization': 'bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VycyI6eyJpZCI6MywidXNlcm5hbWUiOiJFbWlsIiwiZW1haWwiOiJlbWlsYnRsQHlhaG9vLmNvbSIsInBhc3N3b3JkIjoiJDJiJDEwJFZYU3AuL0VXbFFJM3d6VkxRLmFVaU9sZlh0aWN4T2VBRDRXZW44cnhZaDV3YjVBbEt5WnVxIn0sImlhdCI6MTU4NDAzMzIxM30.IcPdzu9b-wwf3ml1AV-9wbeVkl0clYhgFQNOZfMRx54'
                 
-              },
+                
+			  },
+			  
+			  data : formData
              
     })
     .then(response => {
@@ -127,7 +128,7 @@ class PostForm extends Component {
                    
 					<button type="submit">Submit</button>
 				</form>
-                <ImagePicker name="images"></ImagePicker>
+                <ImagePicker name="images" type='images' value='images'> </ImagePicker>
 			</div>
 
             
