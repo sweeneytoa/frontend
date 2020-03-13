@@ -147,13 +147,6 @@ export default class Login extends Component {
             colors={['#61a1b8', '#2d3743', '#000000']}
             style={ styles.root}>
           <View style={{padding: 10}}>
-
-            <TextInput
-            style={{height: 40, fontSize: 20, borderWidth:2, borderRadius:7, borderColor:"black", backgroundColor:"white"}}  
-            type="password"
-            placeholder="password"
-            value={password}
-            onChange={this.onTextboxChangepassword}></TextInput>
            
             <TextInput
             style={{height: 40, fontSize: 20, borderWidth:2, borderRadius:7, borderColor:"black", backgroundColor:"white"}}  
@@ -162,9 +155,16 @@ export default class Login extends Component {
             value={username}
             onChange={this.onTextboxChangeusername}></TextInput>
 
+            <TextInput
+            style={{height: 40, fontSize: 20, borderWidth:2, borderRadius:7, borderColor:"black", backgroundColor:"white"}}  
+            type="password"
+            placeholder="password"
+            value={password}
+            onChange={this.onTextboxChangepassword}></TextInput>
+
             <View style={{height:10}}></View>
 
-            <Button title='title' onPress={this.onSignIn}>Log in</Button>
+            <Button title='Log in' onPress={this.onSignIn}></Button>
             
             
           </View>
