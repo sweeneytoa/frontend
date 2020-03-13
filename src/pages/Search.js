@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import { View, Text, TextInput, Button, StyleSheet } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
+import axios from 'axios';
+import PostL from './PostSearchList';
+
 
 export default class Search extends Component {
 
@@ -9,60 +12,77 @@ constructor(props) {
   super(props);
 
   this.state = {
-    onSearch: {
-  category: '',
-  location: '',
-  date: '',}
+    onSearch: []
+  
     }
 
     this.onSearch = this.onSearch.bind(this);
+
   this.onTextboxChangeCategory = this.onTextboxChangeCategory.bind(this);
+
   this.onTextboxChangeLocation = this.onTextboxChangeLocation.bind(this);
+   		   
   this.onTextboxChangeDate = this.onTextboxChangeDate.bind(this);
+  
 }
 
 onTextboxChangeCategory(event){
   this.setState({
-    category: event.target.value,
+    [event.target.name]: event.target.value
   });
+  
 
 }
 
 onTextboxChangeLocation(event){
   this.setState({
-    location: event.target.value,
+    [event.target.name]: event.target.value
   });
+  
+
 }
 
 onTextboxChangeDate(event){
   this.setState({
-    date: event.target.value,
+    [event.target.name]: event.target.value
   });
+  
+
 }
+
 
 
 onSearch(){
   // Grab state
-  /*const {
+  const {
     category,
     location,
-    date
+    date, 
+    
   } = this.state;
-*/
-  const searchUri='';
 
-  if(this.category.length >0){
-    searchUri = 'https://apioulu.herokuapp.com/api/posts/category/' +category
-  } else if(this.location.length >0){
-    searchUri = 'https://apioulu.herokuapp.com/api/posts/location/' +loaction
-  } else if(this.date.length > 0){
-    searchUri = 'https://apioulu.herokuapp.com/api/posts/date/' +date
+  let searchUri='';
+
+  alert("c:" +category +" l:" +location +" d: " +date)
+  if(this.state.category != null){
+    alert("category")
+    searchUri = 'https://apioulu.herokuapp.com/api/posts/category/' + category
+    this.state.category = null;
+  } else if(this.state.location != null){
+    alert("location")
+    searchUri = 'https://apioulu.herokuapp.com/api/posts/location/' + location
+    this.state.location = null;
+  } else if(this.state.date != null){
+    alert("date")
+    searchUri = 'https://apioulu.herokuapp.com/api/posts/date/' + date
+    this.state.date = null;
   }else{
     return false;
-  }
+  } 
 
 
-  axios.get('https://apioulu.herokuapp.com/api/posts/category.category')
+
+  axios.get(searchUri)
   .then( (response) => {
     console.log("response", response);
     this.setState({
@@ -80,12 +100,8 @@ onSearch(){
 
 render() {
 
-  const {
-    category,
-    location,
-    date
-  } = this.state;
-
+  
+  const { onSearch} = this.state
   return (
 
     <SafeAreaView style={styles.root}>
@@ -104,6 +120,8 @@ render() {
               placeholder="Category"
               onChange={this.onTextboxChangeCategory}
           />  
+
+
           <TextInput  
               style={{height: 40, fontSize: 20, borderWidth:2, borderRadius:7, borderColor:"black", backgroundColor:"white"}} 
               name="location"
@@ -118,11 +136,20 @@ render() {
               placeholder="Date"
               onChange={this.onTextboxChangeDate}
           />
+        
           <Button 
               title='search'
               borderRadius='20'
               onPress={this.onSearch}
           ></Button>
+
+          <Text>
+            {
+                onSearch.length ?
+                onSearch.map(post => <Text key={post.id}>{post.title} </Text>):
+                null
+            }
+          </Text>
       </View>  
       </LinearGradient>
 
