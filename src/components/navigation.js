@@ -7,6 +7,8 @@ import CreateView from '../pages/Create'
 import listAllPostsView from '../pages/ListAllPosts';
 import searchView from '../pages/Search';
 import profileView from '../pages/Profile';
+import loginView from '../pages/Login';
+import signUpView from '../pages/SignUp';
 
 const Tab = createBottomTabNavigator();
 
@@ -42,14 +44,32 @@ export default class TabNavigation extends Component {
                 <Ionicons name="ios-search" color={color} size={size} />)
             }}
           />
+          
+            <Tab.Screen 
+            name="Profile" 
+            component={profileView} 
+            options={{ 
+              tabBarIcon: ({ color, size }) => (
+                <Ionicons name="ios-person" color={color} size={size} />)
+            }}
+          />
 
           <Tab.Screen 
-          name="Profile" 
-          component={profileView} 
-          options={{ 
-            tabBarIcon: ({ color, size }) => (
-              <Ionicons name="ios-person" color={color} size={size} />)
-          }}
+            name="LogIn" 
+            component={loginView} 
+            options={{ 
+              tabBarIcon: ({ color, size }) => (
+                <Ionicons name="ios-log-in" color={color} size={size} />)
+            }}
+          />
+          
+          <Tab.Screen 
+            name="SignUp" 
+            component={signUpView} 
+            options={{ 
+              tabBarIcon: ({ color, size }) => (
+                <Ionicons name="md-log-in" color={color} size={size} />)
+            }}
           />
         </Tab.Navigator>
       </NavigationContainer>

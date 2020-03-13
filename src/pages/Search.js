@@ -112,6 +112,7 @@ render() {
             colors={['#61a1b8', '#2d3743', '#000000']}
             style={ styles.root}>
       
+
       <View style={{padding: 10}}>  
           <TextInput  
               style={{height: 40, fontSize: 20, borderWidth:2, borderRadius:7, borderColor:"black", backgroundColor:"white"}}  
@@ -142,7 +143,9 @@ render() {
               borderRadius='20'
               onPress={this.onSearch}
           ></Button>
-
+    
+            <View style={{height:10}}></View>
+    
           <Text>
             {
                 onSearch.length ?
@@ -151,6 +154,7 @@ render() {
             }
           </Text>
       </View>  
+
       </LinearGradient>
 
     </SafeAreaView>

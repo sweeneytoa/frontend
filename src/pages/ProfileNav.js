@@ -31,7 +31,7 @@ export default class ProfileNav extends Component {
       return (
         <NavigationContainer>
             <Stack.Navigator>
-                <Stack.Screen name="Profile" componnent={Profile}/>
+                <Stack.Screen name="Profile" component={Profile}/>
             </Stack.Navigator>
         </NavigationContainer>
         

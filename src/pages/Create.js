@@ -1,12 +1,11 @@
 import React, { Component } from "react";
-
-
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { LinearGradient } from 'expo-linear-gradient';
 import ImagePicker from '../components/imagePicker';
 import NextArrowButton from "../components/button/NextArrowButton";
 import PostForm from "../components/PostForm"
-
 import axios from 'axios';
-import { Text, View, Form, TextInput, ScrollView, Button} from 'react-native';
+import { Text, View, Form, TextInput, ScrollView, Button, StyleSheet} from 'react-native';
 
 
 export default class Create extends Component {
@@ -76,81 +75,82 @@ export default class Create extends Component {
 	render() {
 		const { title, description, locationCountry, askingPrice, deliveryType, category, images } = this.state
 		return (
-			<View>
-			
+			<SafeAreaView style={styles.root}>
+        <View style={{height:50, alignItems: 'center', justifyContent: 'center', backgroundColor:'#ffffff'}}>
+          <Text style={{fontSize:40, color:"black", justifyContent:"center", alignContent:"center", fontWeight:"400", backgroundColor:'#ffffff'}}>Create Post</Text>
+        </View>
+        <LinearGradient
+              colors={['#61a1b8', '#2d3743', '#000000']}
+              style={ styles.root}>
+          <View style={{padding: 10}}>
 
-					<Text>New post title</Text>
-					<TextInput
-            name="title"
-						placeholder="Story"
-						value={this.props.title}
-						onChange={this.changeHandler}>
-					</TextInput>
+            <TextInput
+              style={{height: 40, fontSize: 20, borderWidth:2, borderRadius:7, borderColor:"black", backgroundColor:"white"}}  
+              name="title"
+              placeholder="Title"
+              value={this.props.title}
+              onChange={this.changeHandler}>
+            </TextInput>
 
-					<Text>New post description</Text>
-					<TextInput
-            name="description"
-						placeholder="Story"
-						value={this.props.description}
-						onChange={this.changeHandler}>
-					</TextInput>
+            <TextInput
+              style={{height: 40, fontSize: 20, borderWidth:2, borderRadius:7, borderColor:"black", backgroundColor:"white"}}  
+              name="description"
+              placeholder="Description"
+              value={this.props.description}
+              onChange={this.changeHandler}>
+            </TextInput>
 
-					<Text>New post locationCountry</Text>
-					<TextInput
-            name="locationCountry"
-						placeholder="Story"
-						value={this.props.locationCountry}
-						onChange={this.changeHandler}>
-					</TextInput>
+            <TextInput
+              style={{height: 40, fontSize: 20, borderWidth:2, borderRadius:7, borderColor:"black", backgroundColor:"white"}}  
+              name="locationCountry"
+              placeholder="Counrty"
+              value={this.props.locationCountry}
+              onChange={this.changeHandler}>
+            </TextInput>
 
-          <Text>New post locationCity</Text>
-          <TextInput
-            name="locationCity"
-						placeholder="Story"
-						value={this.props.locationCity}
-						onChange={this.changeHandler}>
-					</TextInput>
+            <TextInput
+              style={{height: 40, fontSize: 20, borderWidth:2, borderRadius:7, borderColor:"black", backgroundColor:"white"}}  
+              name="locationCity"
+              placeholder="City"
+              value={this.props.locationCity}
+              onChange={this.changeHandler}>
+            </TextInput>
+
+            <TextInput
+              style={{height: 40, fontSize: 20, borderWidth:2, borderRadius:7, borderColor:"black", backgroundColor:"white"}}  
+              name="askingPrice"
+              placeholder="Price"
+              value={this.props.askingPrice}
+              onChange={this.changeHandler}>
+            </TextInput>
+
+            <TextInput
+              style={{height: 40, fontSize: 20, borderWidth:2, borderRadius:7, borderColor:"black", backgroundColor:"white"}}  
+              name="deliveryType"
+              placeholder="Delivery type"
+              value={this.props.deliveryType}
+              onChange={this.changeHandler}>
+            </TextInput>
+
+            <TextInput
+              style={{height: 40, fontSize: 20, borderWidth:2, borderRadius:7, borderColor:"black", backgroundColor:"white"}}  
+              name="category"
+              placeholder="Category"
+              value={this.props.category}
+              onChange={this.changeHandler}>
+            </TextInput>
+
+            <View style={{height:10}}></View>
+            
+            <Button title='Create' onPress={this.submitHandler}></Button>
 
 
-					<Text>New post askingPrice</Text>
-					<TextInput
-            name="askingPrice"
-						placeholder="Story"
-						value={this.props.askingPrice}
-						onChange={this.changeHandler}>
-					</TextInput>
-
-					<Text>New post deliveryType</Text>
-					<TextInput
-            name="deliveryType"
-						placeholder="Story"
-						value={this.props.deliveryType}
-						onChange={this.changeHandler}>
-					</TextInput>
-
-					<Text>New post category</Text>
-					<TextInput
-            name="category"
-						placeholder="Story"
-						value={this.props.category}
-						onChange={this.changeHandler}>
-					</TextInput>
           
-          <Text>New Images Post</Text>
-          <TextInput
-            name="images"
-						placeholder="Story"
-						value={this.props.images}
-						onChange={this.changeHandler}>
-					</TextInput>
+        </View>
+      
+      </LinearGradient>
 
-          
-					
-          <Button title='title' onPress={this.submitHandler}> Sign in</Button>
-
-
-				
-			</View>
+    </SafeAreaView>
 			
 			
 			
@@ -161,3 +161,10 @@ export default class Create extends Component {
 		)
 	}
 }
+
+const styles = StyleSheet.create({
+  root: {
+    flexDirection: 'column',
+    flex: 1,
+  }
+});
