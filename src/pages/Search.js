@@ -9,10 +9,13 @@ constructor(props) {
   super(props);
 
   this.state = {
+    onSearch: {
   category: '',
   location: '',
-  date: ''};
+  date: '',}
+    }
 
+    this.onSearch = this.onSearch.bind(this);
   this.onTextboxChangeCategory = this.onTextboxChangeCategory.bind(this);
   this.onTextboxChangeLocation = this.onTextboxChangeLocation.bind(this);
   this.onTextboxChangeDate = this.onTextboxChangeDate.bind(this);
@@ -59,28 +62,20 @@ onSearch(){
   }
 
 
-  // Get request to backend
-  /*fetch(searchUri, {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: {}
-  }).then(res => res.json()).then(json => {
-
-    if (json.success) {
-      setInStorage('the_main_app', { token: json.token });
-      this.setState({
-      });
-
-    } else {
-      this.setState({
-      });
-    }
-  });*/
-
-
+  axios.get('https://apioulu.herokuapp.com/api/posts/category.category')
+  .then( (response) => {
+    console.log("response", response);
+    this.setState({
+      onSearch: response.data
+    });
+    console.log("onSearch", this.state.onSearch);
+  })
+  .catch( (error) => {
+    console.log(error);
+  });  
 }
+
+
 
 
 render() {
@@ -132,6 +127,7 @@ render() {
                 onPress={this.onSearch}
             ></Button>
         </View>  
+
       </LinearGradient>
 
     </SafeAreaView>
