@@ -17,7 +17,6 @@ export default class TabNavigation extends Component {
       <NavigationContainer> 
         <Tab.Navigator>
             <Tab.Screen 
-            
             name="ListAllPosts" 
             component={listAllPostsView} 
             options={{ 
@@ -34,6 +33,7 @@ export default class TabNavigation extends Component {
                 <Ionicons name="ios-add" color={color} size={size} />)
             }}
           />
+
           <Tab.Screen 
             name="Search" 
             component={searchView} 
@@ -42,13 +42,14 @@ export default class TabNavigation extends Component {
                 <Ionicons name="ios-search" color={color} size={size} />)
             }}
           />
-            <Tab.Screen 
-            name="Profile" 
-            component={profileView} 
-            options={{ 
-              tabBarIcon: ({ color, size }) => (
-                <Ionicons name="ios-person" color={color} size={size} />)
-            }}
+
+          <Tab.Screen 
+          name="Profile" 
+          component={profileView} 
+          options={{ 
+            tabBarIcon: ({ color, size }) => (
+              <Ionicons name="ios-person" color={color} size={size} />)
+          }}
           />
         </Tab.Navigator>
       </NavigationContainer>
