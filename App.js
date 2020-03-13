@@ -7,7 +7,7 @@ import Navigation from './src/components/navigation';
 
 export default class App extends Component {
   render() {
-    return <Login />;
-    //return <Navigation/>;
+    //return <Login />;
+    return <Navigation/>;
   }
 }
