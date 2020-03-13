@@ -19,7 +19,7 @@ export default class TabNavigation extends Component {
       <NavigationContainer> 
         <Tab.Navigator>
             <Tab.Screen 
-            name="ListAllPosts" 
+            name="All posts" 
             component={listAllPostsView} 
             options={{ 
               tabBarIcon: ({ color, size }) => (

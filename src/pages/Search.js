@@ -137,6 +137,8 @@ render() {
               placeholder="Date"
               onChange={this.onTextboxChangeDate}
           />
+
+          <View style={{height:10}}></View>
         
           <Button 
               title='search'
@@ -144,7 +146,7 @@ render() {
               onPress={this.onSearch}
           ></Button>
     
-            <View style={{height:10}}></View>
+            
     
           <Text>
             {
