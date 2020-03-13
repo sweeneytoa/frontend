@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Text, View, Form, TextInput, ScrollView} from 'react-native'
 import ImagePicker from './imagePicker'
+
 
 class PostForm extends Component {
 	constructor(props) {
@@ -75,65 +77,68 @@ class PostForm extends Component {
 	render() {
 		const { title, description, location, price, delivery, category, images } = this.state
 		return (
-			<div>
-				<form onSubmit={this.submitHandler}>
-					<div>
-						<input
-							type="text"
-							name="title"
-							value={title}
-							onChange={this.changeHandler}
-						/>
-					</div>
-					<div>
-						<input
-							type="text"
-							name="description"
-							value={description}
-							onChange={this.changeHandler}
-						/>
-					</div>
-                    <div>
-						<input
-							type="location"
-							name="location"
-							value={location}
-							onChange={this.changeHandler}
-						/>
-					</div>
-                    <div>
-						<input
-							type="text"
-							name="price"
-							value={price}
-							onChange={this.changeHandler}
-						/>
-					</div>
-                    <div>
-						<input
-							type="text"
-							name="delivery"
-							value={delivery}
-							onChange={this.changeHandler}
-						/>
-					</div>
-					<div>
-						<input
-							type="text"
-							name="category"
-							value={category}
-							onChange={this.changeHandler}
-						/>
-					</div>
-                   
-					<button type="submit">Submit</button>
-				</form>
-                <ImagePicker name="images" type='images' value='images'> </ImagePicker>
-			</div>
+			<View>
+				<Form onSubmit={this.submitHandler}>
 
+					<Text>New post title</Text>
+					<TextInput
+						placeholder="Story"
+						value={title}
+						onChange={this.changeHandler}>
+					</TextInput>
+
+					<Text>New post description</Text>
+					<TextInput
+						placeholder="Story"
+						value={description}
+						onChange={this.changeHandler}>
+					</TextInput>
+
+					<Text>New post location</Text>
+					<TextInput
+						placeholder="Story"
+						value={location}
+						onChange={this.changeHandler}>
+					</TextInput>
+
+					<Text>New post price</Text>
+					<TextInput
+						placeholder="Story"
+						value={price}
+						onChange={this.changeHandler}>
+					</TextInput>
+
+					<Text>New post delivery</Text>
+					<TextInput
+						placeholder="Story"
+						value={delivery}
+						onChange={this.changeHandler}>
+					</TextInput>
+
+					<Text>New post category</Text>
+					<TextInput
+						placeholder="Story"
+						value={category}
+						onChange={this.changeHandler}>
+					</TextInput>
+
+					
+
+
+
+				</Form>
+			</View>
+			
+			
+			
+			
+			
+		
             
 		)
 	}
 }
+
+
 
 export default PostForm

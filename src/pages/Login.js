@@ -6,7 +6,8 @@ import {
   ScrollView,
   StyleSheet,
   Fetch,
-  Button
+  Button,
+  TextInput
 } from "react-native";
 
 import {
@@ -130,7 +131,7 @@ export default class Login extends Component {
     } = this.state;
 
     if (isLoading) {
-      return <Text> (<div> <p>Loading...</p></div>); </Text>
+      return <Text> Loading... </Text>
     }
 
 
@@ -142,18 +143,18 @@ export default class Login extends Component {
           <ScrollView style={styles.scrollView}>
             <Text style={styles.loginHeader}>Login</Text>
 
-            <input
+            <TextInput
 type="password"
 placeholder="password"
 value={password}
-onChange={this.onTextboxChangepassword}></input>
+onChange={this.onTextboxChangepassword}></TextInput>
            
             
-            <input
+            <TextInput
 type="username"
 placeholder="username"
 value={username}
-onChange={this.onTextboxChangeusername}></input>
+onChange={this.onTextboxChangeusername}></TextInput>
             
             
 
@@ -161,7 +162,7 @@ onChange={this.onTextboxChangeusername}></input>
 
 
             
-                <button onClick={this.onSignIn}> Sign in</button>
+                <Button title='title' onPress={this.onSignIn}> Sign in</Button>
           </ScrollView>
 
          </View>
