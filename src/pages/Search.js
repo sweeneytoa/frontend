@@ -123,6 +123,9 @@ render() {
                 placeholder="Date"
                 onChange={this.onTextboxChangeDate}
             />
+
+            <View style={{height:10}}></View>
+            
             <Button 
                 title='search'
                 borderRadius='20'

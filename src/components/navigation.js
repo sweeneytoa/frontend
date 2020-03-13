@@ -8,7 +8,7 @@ import listAllPostsView from '../pages/ListAllPosts';
 import searchView from '../pages/Search';
 import profileView from '../pages/Profile';
 import loginView from '../pages/Login';
-import signUpView from '../pages/Login';
+import signUpView from '../pages/SignUp';
 
 const Tab = createBottomTabNavigator();
 

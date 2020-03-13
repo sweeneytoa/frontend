@@ -140,7 +140,7 @@ export default class Create extends Component {
               onChange={this.changeHandler}>
             </TextInput>
 
-            
+            <View style={{height:10}}></View>
             
             <Button title='Create' onPress={this.submitHandler}></Button>
 

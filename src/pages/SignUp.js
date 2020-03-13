@@ -28,11 +28,13 @@ export default class Login extends Component {
       signUpError: '',
       signInErrror: '',
       username:'',
-      password: ''
+      password: '',
+      email:''
     };
 
     this.onTextboxChangeusername = this.onTextboxChangeusername.bind(this);
     this.onTextboxChangepassword = this.onTextboxChangepassword.bind(this);
+    this.onTextboxChangeemail = this.onTextboxChangeemail.bind(this);
     this.onSignIn = this.onSignIn.bind(this);
   }
 
@@ -77,11 +79,19 @@ export default class Login extends Component {
     
   }
 
+  onTextboxChangeemail(event) {
+    this.setState({
+      email: event.target.value,
+    });
+    
+  }
+
   onSignIn() {
     // Grab state
     const {
           username,
           password,
+          email
     } = this.state;
     this.setState({
     isLoading: true,
@@ -95,6 +105,7 @@ export default class Login extends Component {
     body: JSON.stringify({
     username: username,
     password: password,
+    email: email
     }),
     }).then(res => res.json())
     .then(json => {
@@ -107,6 +118,7 @@ export default class Login extends Component {
     isLoading: false,
     password: '',
     username: '',
+    email: '',
     token: json.token,
     });
     } else {
@@ -129,6 +141,7 @@ export default class Login extends Component {
       signInErrror,
       username,
       password,
+      email
     } = this.state;
 
     if (isLoading) {
@@ -141,30 +154,40 @@ export default class Login extends Component {
 
       <SafeAreaView style={styles.root}>
         <View style={{height:50, alignItems: 'center', justifyContent: 'center', backgroundColor:'#ffffff'}}>
-            <Text style={{fontSize:40, color:"black", justifyContent:"center", alignContent:"center", fontWeight:"400", backgroundColor:'#ffffff'}}>Login</Text>
+            <Text style={{fontSize:40, color:"black", justifyContent:"center", alignContent:"center", fontWeight:"400", backgroundColor:'#ffffff'}}>SignUp</Text>
         </View>
         <LinearGradient
             colors={['#61a1b8', '#2d3743', '#000000']}
             style={ styles.root}>
+
           <View style={{padding: 10}}>
 
-            <TextInput
+          <TextInput
             style={{height: 40, fontSize: 20, borderWidth:2, borderRadius:7, borderColor:"black", backgroundColor:"white"}}  
-            type="password"
-            placeholder="password"
-            value={password}
-            onChange={this.onTextboxChangepassword}></TextInput>
-           
+            type="email"
+            placeholder="email"
+            value={email}
+            onChange={this.onTextboxChangeusername}></TextInput>
+            
             <TextInput
             style={{height: 40, fontSize: 20, borderWidth:2, borderRadius:7, borderColor:"black", backgroundColor:"white"}}  
             type="username"
             placeholder="username"
             value={username}
             onChange={this.onTextboxChangeusername}></TextInput>
+            
+            <TextInput
+            style={{height: 40, fontSize: 20, borderWidth:2, borderRadius:7, borderColor:"black", backgroundColor:"white"}}  
+            type="password"
+            placeholder="password"
+            value={password}
+            onChange={this.onTextboxChangepassword}></TextInput>
+
+            
 
             <View style={{height:10}}></View>
 
-            <Button title='title' onPress={this.onSignIn}>Log in</Button>
+            <Button title='Sign Up' onPress={this.onSignIn}></Button>
             
             
           </View>
