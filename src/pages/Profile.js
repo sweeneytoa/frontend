@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { SafeAreaView } from 'react-native-safe-area-context';
 import {
   View,
   Text,
@@ -8,7 +9,6 @@ import {
   Fetch,
   Button, 
   Input,
-  SafeAreaView,
   StatusBar
 } from "react-native";
 import { withRouter } from 'react-router';
@@ -18,6 +18,9 @@ import NextArrowButton from "../components/button/NextArrowButton";
 import Login from "./Login";
 import {NavigationContainer} from '@react-navigation/native'
 import {createStackNavigavtor} from '@react-navigation/stack'
+import { LinearGradient } from 'expo-linear-gradient';
+import {Redirect} from 'react-router-dom'
+
 
 //const Stack = createStackNavigavtor();
 
@@ -25,17 +28,39 @@ import {createStackNavigavtor} from '@react-navigation/stack'
 
 export default class Profile extends Component {
 
+onLogin(){
 
-render(){
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+   return  <Redirect  to="/posts/" />
 
-      <Text style={{ fontSize: 50, fontWeight: '700' }}>Profile View</Text>
-      <Button onPress={event =>  window.location.href='./Login'} title='Sign in'> Sign in</Button>
-      <Login />
-    </View>
-    
-  )
-}
 }
 
+
+  render(){
+    return (
+      <SafeAreaView style={styles.root}>
+        <View style={{height:50, alignItems: 'center', justifyContent: 'center', backgroundColor:'#ffffff'}}>
+            <Text style={{fontSize:40, color:"black", justifyContent:"center", alignContent:"center", fontWeight:"400", backgroundColor:'#ffffff'}}>Profile</Text>
+        </View>
+        <LinearGradient
+              colors={['#61a1b8', '#2d3743', '#000000']}
+              style={ styles.root}>
+          <View style={{padding: 10}}>
+
+
+                  
+          </View>
+
+        </LinearGradient>
+
+      </SafeAreaView>
+      
+    )
+  }
+}
+
+const styles = StyleSheet.create({
+  root: {
+    flexDirection: 'column',
+    flex: 1,
+  }
+});
