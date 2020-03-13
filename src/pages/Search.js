@@ -101,34 +101,34 @@ render() {
             colors={['#61a1b8', '#2d3743', '#000000']}
             style={ styles.root}>
       
-      <View style={{padding: 10}}>  
-          <TextInput  
-              style={{height: 40, fontSize: 20, borderWidth:2, borderRadius:7, borderColor:"black", backgroundColor:"white"}}  
-              name="category"
-              value={this.props.category}
-              placeholder="Category"
-              onChangeText={this.onTextboxChangeCategory}
-          />  
-          <TextInput  
-              style={{height: 40, fontSize: 20, borderWidth:2, borderRadius:7, borderColor:"black", backgroundColor:"white"}} 
-              name="location"
-              value={this.props.location}
-              placeholder="Location"
-              onChange={this.onTextboxChangeLocation}
-          />
-          <TextInput  
-              style={{height: 40, fontSize: 20, borderWidth:2, borderRadius:7, borderColor:"black", backgroundColor:"white"}} 
-              name="date"
-              value={this.props.date}
-              placeholder="Date"
-              onChange={this.onTextboxChangeDate}
-          />
-          <Button 
-              title='search'
-              borderRadius='20'
-              onPress={this.onSearch}
-          ></Button>
-      </View>  
+        <View style={{padding: 10}}>  
+            <TextInput  
+                style={{height: 40, fontSize: 20, borderWidth:2, borderRadius:7, borderColor:"black", backgroundColor:"white"}}  
+                name="category"
+                value={this.props.category}
+                placeholder="Category"
+                onChangeText={this.onTextboxChangeCategory}
+            />  
+            <TextInput  
+                style={{height: 40, fontSize: 20, borderWidth:2, borderRadius:7, borderColor:"black", backgroundColor:"white"}} 
+                name="location"
+                value={this.props.location}
+                placeholder="Location"
+                onChange={this.onTextboxChangeLocation}
+            />
+            <TextInput  
+                style={{height: 40, fontSize: 20, borderWidth:2, borderRadius:7, borderColor:"black", backgroundColor:"white"}} 
+                name="date"
+                value={this.props.date}
+                placeholder="Date"
+                onChange={this.onTextboxChangeDate}
+            />
+            <Button 
+                title='search'
+                borderRadius='20'
+                onPress={this.onSearch}
+            ></Button>
+        </View>  
       </LinearGradient>
 
     </SafeAreaView>
