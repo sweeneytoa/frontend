@@ -42,14 +42,14 @@ export default class TabNavigation extends Component {
                 <Ionicons name="ios-search" color={color} size={size} />)
             }}
           />
-
-          <Tab.Screen 
-          name="Profile" 
-          component={profileView} 
-          options={{ 
-            tabBarIcon: ({ color, size }) => (
-              <Ionicons name="ios-person" color={color} size={size} />)
-          }}
+          
+            <Tab.Screen 
+            name="Profile" 
+            component={profileView} 
+            options={{ 
+              tabBarIcon: ({ color, size }) => (
+                <Ionicons name="ios-person" color={color} size={size} />)
+            }}
           />
         </Tab.Navigator>
       </NavigationContainer>
