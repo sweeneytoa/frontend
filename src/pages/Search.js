@@ -6,6 +6,7 @@ export default class Search extends Component {
 
 constructor(props) {
   super(props);
+
   this.state = {
   category: '',
   location: '',
@@ -18,19 +19,20 @@ constructor(props) {
 
 onTextboxChangeCategory(event){
   this.setState({
-    category: event.target.value
+    category: event.target.value,
   });
+
 }
 
 onTextboxChangeLocation(event){
   this.setState({
-    location: event.target.value
+    location: event.target.value,
   });
 }
 
 onTextboxChangeDate(event){
   this.setState({
-    date: event.target.value
+    date: event.target.value,
   });
 }
 
@@ -57,7 +59,7 @@ onSearch(){
 
 
   // Get request to backend
-  fetch(searchUri, {
+  /*fetch(searchUri, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json'
@@ -74,30 +76,45 @@ onSearch(){
       this.setState({
       });
     }
-  });
+  });*/
+
+
 }
 
 
 render() {
+
+  const {
+    category,
+    location,
+    date
+  } = this.state;
+
   return (
 
     <SafeAreaView >
+      <View style={{height:50, backgroundColor:"lightgray"}}>
+        <Text style={{fontSize:40, color:"black", justifyContent:"center", alignContent:"center", fontWeight:"10"}}>Search</Text>
+      </View>
       <View style={{padding: 10}}>  
           <TextInput  
               style={{height: 40, fontSize: 20, borderWidth:2, borderRadius:7, borderColor:"gray"}}  
-              name="categoryInput"
+              name="category"
+              value={this.props.category}
               placeholder="Category"
-              onChange={this.onTextboxChangeCategory}
+              onChangeText={this.onTextboxChangeCategory}
           />  
           <TextInput  
               style={{height: 40, fontSize: 20, borderWidth:2, borderRadius:7, borderColor:"gray"}} 
-              name="locationInput"
+              name="location"
+              value={this.props.location}
               placeholder="Location"
               onChange={this.onTextboxChangeLocation}
           />
           <TextInput  
               style={{height: 40, fontSize: 20, borderWidth:2, borderRadius:7, borderColor:"gray"}} 
-              name="dateInput"
+              name="date"
+              value={this.props.date}
               placeholder="Date"
               onChange={this.onTextboxChangeDate}
           />
