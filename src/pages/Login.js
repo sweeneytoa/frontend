@@ -9,7 +9,8 @@ import {
   Button,
   TextInput
 } from "react-native";
-
+import { LinearGradient } from 'expo-linear-gradient';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import {
   getFromStorage,
   setInStorage,
@@ -138,35 +139,43 @@ export default class Login extends Component {
     return (
 
 
-      <KeyboardAvoidingView style={styles.wrapper} behavior="padding">
-        <View style={styles.scrollViewWrapper}>
-          <ScrollView style={styles.scrollView}>
-            <Text style={styles.loginHeader}>Login</Text>
+      <SafeAreaView style={styles.root}>
+        <View style={{height:50, alignItems: 'center', justifyContent: 'center', backgroundColor:'#ffffff'}}>
+            <Text style={{fontSize:40, color:"black", justifyContent:"center", alignContent:"center", fontWeight:"400", backgroundColor:'#ffffff'}}>Login</Text>
+        </View>
+        <LinearGradient
+            colors={['#61a1b8', '#2d3743', '#000000']}
+            style={ styles.root}>
+          <View style={{padding: 10}}>
 
             <TextInput
-type="password"
-placeholder="password"
-value={password}
-onChange={this.onTextboxChangepassword}></TextInput>
+            style={{height: 40, fontSize: 20, borderWidth:2, borderRadius:7, borderColor:"black", backgroundColor:"white"}}  
+            type="password"
+            placeholder="password"
+            value={password}
+            onChange={this.onTextboxChangepassword}></TextInput>
            
             
             <TextInput
-type="username"
-placeholder="username"
-value={username}
-onChange={this.onTextboxChangeusername}></TextInput>
+            style={{height: 40, fontSize: 20, borderWidth:2, borderRadius:7, borderColor:"black", backgroundColor:"white"}}  
+            type="username"
+            placeholder="username"
+            value={username}
+            onChange={this.onTextboxChangeusername}></TextInput>
+            <View style={{height:10}}></View>
+            <Button title='title' onPress={this.onSignIn}> Sign in</Button>
             
             
+          </View>
 
            
 
 
             
-                <Button title='title' onPress={this.onSignIn}> Sign in</Button>
-          </ScrollView>
+                
+          </LinearGradient>
 
-         </View>
-       </KeyboardAvoidingView>
+      </SafeAreaView>
     );
   }
 }
@@ -174,25 +183,8 @@ onChange={this.onTextboxChangeusername}></TextInput>
 
 
 const styles = StyleSheet.create({
-    wrapper: {
-      display: "flex",
-      flex: 1,
-      backgroundColor: colors.green01
-    },
-    scrollViewWrapper: {
-      marginTop: 70,
-      flex: 1
-    },
-    avoidView: {
-      paddingLeft: 30,
-      paddingRight: 30,
-      paddingTop: 20,
-      flex:1
-     },
-    loginHeader: {
-      fontSize: 28,
-      color: colors.white,
-      fontWeight: "300",
-      marginBottom: 40
-    }
-  });
+  root: {
+    flexDirection: 'column',
+    flex: 1,
+  }
+});
