@@ -18,11 +18,11 @@ export default class Create extends Component {
             title: '',
             description: '',
             category: '',
-            locationCountry: '',
-            deliveryType: '',
-            askingPrice: '',
+            country: '',
+            delivery: '',
+            price: '',
             images: '',
-            locationCity: '',
+            
             
             
 		}
@@ -53,11 +53,11 @@ export default class Create extends Component {
        
         
 
-		axios.post('http://wihaprojectapi.herokuapp.com/listings/create', this.state,   {
+		axios.post('https://apioulu.herokuapp.com/api/posts', this.state,   {
             headers: {
             
                 
-                'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJ1MiIsInVzZXJuYW1lIjoidGltYmV1dSIsImlhdCI6MTU4NDExNTk4Mn0.Yycpqr9tYuYAypoeBSEn2nXA8K6RFB9RU8mLrhxdGOc'
+                'Authorization': "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VycyI6eyJpZCI6MywidXNlcm5hbWUiOiJ0aW0iLCJlbWFpbCI6ImVtaWxidGxAeWFob28uY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkTkc2UWd6QUtSYXJpeTlOT3NaUXhmdURBZHZBQ3M5aGFyOHZXSEtOcmRlNlRqUXB5cnZYbHEifSwiaWF0IjoxNTg0MzY5Njk4fQ.IeFUWZvdB2Fxv8fE0iZIqDDy7p1__c6a5ZoLKL9kXN0",
                 
                 
 			  }, body: formData,
@@ -73,7 +73,7 @@ export default class Create extends Component {
 }
 
 	render() {
-		const { title, description, locationCountry, askingPrice, deliveryType, category, images } = this.state
+		const { title, description, country, price, delivery, category, images } = this.state
 		return (
 			<SafeAreaView style={styles.root}>
         <View style={{height:50, alignItems: 'center', justifyContent: 'center', backgroundColor:'#ffffff'}}>
@@ -102,33 +102,27 @@ export default class Create extends Component {
 
             <TextInput
               style={{height: 40, fontSize: 20, borderWidth:2, borderRadius:7, borderColor:"black", backgroundColor:"white"}}  
-              name="locationCountry"
-              placeholder="Counrty"
-              value={this.props.locationCountry}
+              name="country"
+              placeholder="Country"
+              value={this.props.country}
               onChange={this.changeHandler}>
             </TextInput>
 
-            <TextInput
-              style={{height: 40, fontSize: 20, borderWidth:2, borderRadius:7, borderColor:"black", backgroundColor:"white"}}  
-              name="locationCity"
-              placeholder="City"
-              value={this.props.locationCity}
-              onChange={this.changeHandler}>
-            </TextInput>
+            
 
             <TextInput
               style={{height: 40, fontSize: 20, borderWidth:2, borderRadius:7, borderColor:"black", backgroundColor:"white"}}  
-              name="askingPrice"
+              name="price"
               placeholder="Price"
-              value={this.props.askingPrice}
+              value={this.props.price}
               onChange={this.changeHandler}>
             </TextInput>
 
             <TextInput
               style={{height: 40, fontSize: 20, borderWidth:2, borderRadius:7, borderColor:"black", backgroundColor:"white"}}  
-              name="deliveryType"
+              name="delivery"
               placeholder="Delivery type"
-              value={this.props.deliveryType}
+              value={this.props.delivery}
               onChange={this.changeHandler}>
             </TextInput>
 
