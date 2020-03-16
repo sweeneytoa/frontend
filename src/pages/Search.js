@@ -4,6 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
 import axios from 'axios';
 import PostL from './PostSearchList';
+import { ScrollView } from 'react-native-gesture-handler';
 
 
 export default class Search extends Component {
@@ -63,17 +64,14 @@ onSearch(){
 
   let searchUri='';
 
-  alert("c:" +category +" l:" +location +" d: " +date)
+  
   if(this.state.category != null){
-    alert("category")
     searchUri = 'https://apioulu.herokuapp.com/api/posts/category/' + category
     this.state.category = null;
   } else if(this.state.location != null){
-    alert("location")
     searchUri = 'https://apioulu.herokuapp.com/api/posts/location/' + location
     this.state.location = null;
   } else if(this.state.date != null){
-    alert("date")
     searchUri = 'https://apioulu.herokuapp.com/api/posts/date/' + date
     this.state.date = null;
   }else{
@@ -148,13 +146,25 @@ render() {
     
             
     
-          <Text>
+          <ScrollView>
             {
                 onSearch.length ?
-                onSearch.map(post => <Text key={post.id}>{post.title} </Text>):
+                onSearch.map(post => <View key={post.id} style={{borderWidth:2, borderRadius:7, borderColor:"black", backgroundColor:"white", padding: 3}}> 
+                        
+
+                <Text style={{fontSize:30, fontWeight:'700'}}>{post.title}</Text>
+                <Text style={{alignItems: 'center', justifyContent:'center', fontSize:20, alignContent:'center'}}>{post.description}</Text>
+                <Text style={{alignItems: 'center', justifyContent:'center', fontSize:20, alignContent:'center'}}>Price: {post.price} €</Text>
+                <View style={{height:10}}></View>
+                <Text style={{alignItems: 'center', justifyContent:'center', fontSize:20, alignContent:'center'}}>Category: {post.category}</Text>
+                <Text style={{alignItems: 'center', justifyContent:'center', fontSize:20, alignContent:'center'}}>Delivery type: {post.delivery}</Text>
+                <Text style={{alignItems: 'center', justifyContent:'center', fontSize:20, alignContent:'center'}}>Location: {post.location}</Text>
+                <Text style={{alignItems: 'center', justifyContent:'center', fontSize:20, alignContent:'center'}}>Date: {post.date}</Text>
+
+                 </View>):
                 null
             }
-          </Text>
+          </ScrollView>
       </View>  
 
       </LinearGradient>
