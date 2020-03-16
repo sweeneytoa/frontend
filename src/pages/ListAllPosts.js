@@ -52,9 +52,10 @@ render() {
                         <Text style={{alignItems: 'center', justifyContent:'center', fontSize:20, alignContent:'center'}}>Category: {post.category}</Text>
                         <Text style={{alignItems: 'center', justifyContent:'center', fontSize:20, alignContent:'center'}}>Delivery type: {post.delivery}</Text>
                         <Text style={{alignItems: 'center', justifyContent:'center', fontSize:20, alignContent:'center'}}>Location: {post.location}</Text>
+                        <Text style={{alignItems: 'center', justifyContent:'center', fontSize:20, alignContent:'center'}}>Date: {post.date}</Text>
 
-                        
-                         </View>):
+                         </View>
+                         ):
                         null
                     }
                 </ScrollView>
