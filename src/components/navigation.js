@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, View, SafeAreaView } from 'react-native'
+import { Text, View, SafeAreaView, StatusBar } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { Ionicons } from 'react-native-vector-icons';
@@ -15,11 +15,10 @@ const Tab = createBottomTabNavigator();
 export default class TabNavigation extends Component {
   render() {
     return (
-
       <NavigationContainer> 
         <Tab.Navigator>
             <Tab.Screen 
-            name="ListAllPosts" 
+            name="All posts" 
             component={listAllPostsView} 
             options={{ 
               tabBarIcon: ({ color, size }) => (
